@@ -1,7 +1,7 @@
 {
   "name": "todo",
   "version": "0.1.0",
-  "homepage": "https://gitname.github.io/todos",
+  "homepage": "https://Inna-Alex.github.io/todos",
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
