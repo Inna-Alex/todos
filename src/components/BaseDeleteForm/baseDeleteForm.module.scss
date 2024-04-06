@@ -1,0 +1,20 @@
+.form {
+	width: 100%;
+}
+
+.formTitle {
+	color: var(--black-1);
+	font-size: 2rem;
+	font-weight: 600;
+	margin-bottom: 2rem;
+	text-transform: capitalize;
+}
+
+.ButtonContainer {
+	display: flex;
+	margin-top: 25;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: 2rem;
+	gap: 1rem;
+}
