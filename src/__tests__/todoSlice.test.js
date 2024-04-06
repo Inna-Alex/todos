@@ -6,8 +6,6 @@ import * as Consts from '../utils/consts'
 describe("tests for todoSlice", () => {
   test("initialize slice with initialValue", () => {
     const listSliceInit = todoSlice(initialState, { type: "unknown" });
-    console.log(initialState)
-    console.log(listSliceInit)
     expect(listSliceInit).toBe(initialState);
   });
 
