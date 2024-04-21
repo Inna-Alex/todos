@@ -52,11 +52,27 @@
 }
 
 .formTitle {
-	color: var(--black-1);
+	// color: var(--black-1);
 	font-size: 2rem;
 	font-weight: 600;
 	margin-bottom: 2rem;
 	text-transform: capitalize;
+}
+
+.formLight {
+	color: var(--black-1);
+	label,
+	span {
+		color: var(--black-1);
+	}
+}
+.formDark {
+	color: var(--white);
+	background: var(--bg-d);
+	label,
+	span {
+		color: var(--white);
+	}
 }
 
 .form {
@@ -65,9 +81,10 @@
 	label,
 	span {
 		font-size: 1.6rem;
-		color: var(--black-1);
+		// color: var(--black-1);
 
 		input {
+			color: var(--black-1);
 			box-sizing: border-box;
 			margin-top: 0.5rem;
 			margin-bottom: 2rem;
@@ -85,13 +102,13 @@
 	}
 }
 
-.buttonContainer {
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	margin-top: 2rem;
-	gap: 1rem;
-}
+// .buttonContainer {
+// 	display: flex;
+// 	justify-content: flex-start;
+// 	align-items: center;
+// 	margin-top: 2rem;
+// 	gap: 1rem;
+// }
 
 .Button {
 	display: inline-flex;

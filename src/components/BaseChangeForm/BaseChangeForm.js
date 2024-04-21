@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { v4 as uuid } from 'uuid';
 import { format } from 'date-fns';
 import { useDispatch } from "react-redux";
@@ -6,12 +6,14 @@ import { useForm, Controller } from "react-hook-form";
 import Select from 'react-select';
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
+import classnames from 'classnames';
 
 import styles from './baseChangeForm.module.scss'
 import { addTodo, updateTodo } from '../../slices/todoSlice'
 import Button, { buttonTypes } from '../Button/Button'
 import { statusOptions } from '../FilterButton/FilterButton'
 import * as Consts from '../../utils/consts'
+import ThemeContext from '../../context/ThemeContext'
 
 
 const colourStyles = {
@@ -39,7 +41,9 @@ const vidationSchema = yup
     todoStatus: yup.object().shape({
       value: yup.string().required(),
       label: yup.string().required()
-    }).required('Please select a status').oneOf(statusOptions, 'Status can be either Incomplete or Completed'),
+    })
+      .required('Please select a status')
+      .oneOf(statusOptions, 'Status can be either Incomplete or Completed'),
   })
   .required()
 
@@ -53,6 +57,7 @@ const createTodo = (todo) => {
 }
 
 export const BaseChangeForm = ({ type, setOpen, todo }) => {
+  const { theme } = useContext(ThemeContext)
   const buttonText = type === buttonTypes.toAdd ? 'Add Task' : 'Update Task'
   const defaultValues = {
     title: todo ? todo.title : '',
@@ -76,8 +81,8 @@ export const BaseChangeForm = ({ type, setOpen, todo }) => {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <h1 className={styles.formTitle}>
+    <form className={classnames(styles.form, styles[`form${theme.name}`])} onSubmit={handleSubmit(onSubmit)}>
+      <h1 className={classnames(styles.formTitle, styles[`form${theme.name}`])}>
         {type === buttonTypes.toAdd ? 'Add' : 'Update'} TODO
       </h1>
       <label htmlFor="title">

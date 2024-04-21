@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { MdDelete, MdEdit } from 'react-icons/md';
+import React, { useEffect, useState, useContext } from 'react'
 import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
 
 import styles from './todoItem.module.scss'
 import { updateTodo } from '../../slices/todoSlice'
 import { getFormatDate } from '../../utils/getDate'
-import ModalForm from '../ModalForm/ModalForm';
-import { buttonTypes } from '../Button/Button';
-import CheckboxMain from "../CheckboxMain/CheckboxMain";
+import ModalForm from '../ModalForm/ModalForm'
+import { buttonTypes } from '../Button/Button'
+import CheckboxMain from '../CheckboxMain/CheckboxMain'
+import TodoActions from '../TodoActions/TodoActions'
 import * as Consts from '../../utils/consts'
+import ThemeContext from '../../context/ThemeContext';
 
 function TodoItem({ todo }) {
+  const { theme } = useContext(ThemeContext)
   const dispatch = useDispatch();
   const [isOpen, setOpen] = useState(false);
   const [actionType, setActionType] = useState(buttonTypes.toAdd);
@@ -39,7 +41,7 @@ function TodoItem({ todo }) {
   }
 
   return (
-    <div className={styles.item}>
+    <div className={classnames(styles.item, styles[`item${theme.name}`])}>
       <div className={styles.todoDetails}>
         <div>
           <CheckboxMain isChecked={isCompleted} onCheck={onCheck} />
@@ -48,26 +50,18 @@ function TodoItem({ todo }) {
           <p
             className={classnames(
               styles.todoText,
+              styles[`todo${theme.name}`],
               isCompleted && styles['todoText--completed'],
             )}
           >
             {todo.title}
           </p>
-          <p className={styles.time}>
+          <p className={classnames(styles.time, styles[`todo${theme.name}`],)}>
             {getFormatDate(todo.time)}
           </p>
         </div>
       </div>
-      <div className={styles.todoActions}>
-        <div className={classnames(styles.icon, styles.icon__edit)}
-          onClick={() => handleUpdate()}>
-          <MdEdit />
-        </div>
-        <div className={classnames(styles.icon, styles.icon__delete)}
-          onClick={() => handleDelete()}>
-          <MdDelete />
-        </div>
-      </div>
+      <TodoActions handleUpdate={handleUpdate} handleDelete={handleDelete} />
       <ModalForm isOpen={isOpen} setOpen={setOpen} triggerShow={false} type={actionType} todo={todo} />
     </div>
   )

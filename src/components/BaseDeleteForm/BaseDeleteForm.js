@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import classnames from 'classnames';
 
 import styles from './baseDeleteForm.module.scss'
 import { deleteTodo } from '../../slices/todoSlice'
 import Button, { buttonTypes } from '../Button/Button'
+import ThemeContext from '../../context/ThemeContext'
 
 
 export const BaseDeleteForm = ({ type, setOpen, todo }) => {
+  const { theme } = useContext(ThemeContext)
   const dispatch = useDispatch();
   const { handleSubmit, } = useForm();
   const onSubmit = () => {
@@ -16,7 +19,7 @@ export const BaseDeleteForm = ({ type, setOpen, todo }) => {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={classnames(styles.form, styles[`form${theme.name}`])} onSubmit={handleSubmit(onSubmit)}>
       <h1 className={styles.formTitle}>
         Delete TODO
       </h1>

@@ -6,12 +6,17 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 1rem;
-	background: var(--white);
 	margin-bottom: 1.5rem;
 	border-radius: 4px;
 	&:last-child {
 		margin-bottom: 0;
 	}
+}
+.itemLight {
+	background: var(--white);
+}
+.itemDark {
+	background: var(--bg-d);
 }
 .todoDetails {
 	display: flex;
@@ -51,7 +56,6 @@
 	word-break: break-all;
 	font-weight: 500;
 	font-size: 1.4rem;
-	color: var(--black-2);
 
 	&--completed {
 		text-decoration: line-through;
@@ -63,37 +67,11 @@
 	font-size: 1.2rem;
 	font-weight: 300;
 	margin-top: -0.2rem;
+}
+
+.todoLight {
 	color: var(--black-2);
 }
-.todoActions {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 1rem;
-}
-.icon {
-	font-size: 2rem;
-	padding: 0.5rem;
-	border-radius: 10px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	transition: 0.3s ease background-color;
-	&__edit {
-		background-color: var(--sky-4);
-		color: var(--black-2);
-		&:hover {
-			background-color: var(--sky-10);
-			color: var(--sky-2);
-		}
-	}
-	&__delete {
-		background-color: var(--tomato-5);
-		color: var(--black-2);
-		&:hover {
-			background-color: var(--tomato-9);
-			color: var(--tomato-2);
-		}
-	}
+.todoDark {
+	color: var(--white);
 }

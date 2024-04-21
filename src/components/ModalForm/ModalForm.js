@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
+import classnames from 'classnames';
 
 import styles from './modalForm.module.scss'
 import { BaseChangeForm } from '../BaseChangeForm/BaseChangeForm'
 import { BaseDeleteForm } from '../BaseDeleteForm/BaseDeleteForm'
 import Button, { buttonTypes } from '../Button/Button'
+import ThemeContext from '../../context/ThemeContext';
 
 const ModalForm = ({ isOpen, setOpen, triggerShow, type, todo }) => {
+  const { theme } = useContext(ThemeContext)
+
   return (
     <Dialog.Root open={isOpen} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
@@ -19,7 +23,7 @@ const ModalForm = ({ isOpen, setOpen, triggerShow, type, todo }) => {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.DialogOverlay} />
-        <Dialog.Content className={styles.DialogContent}>
+        <Dialog.Content className={classnames(styles.DialogContent, styles[`Dialog${theme.name}`])}>
           <Dialog.Description className={styles.DialogDescription}>
             {(type === buttonTypes.toAdd || type === buttonTypes.toUpdate) &&
               <BaseChangeForm type={type} setOpen={setOpen} todo={todo} />

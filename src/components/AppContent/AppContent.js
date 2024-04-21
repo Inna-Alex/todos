@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './appContent.module.scss'
-import TodoItem from '../TodoItem/TodoItem';
-import { selectTodoList, selectFilterStatus } from '../../slices/todoSlice'
 import { useSelector } from 'react-redux';
-
+import styles from './appContent.module.scss'
+import { selectTodoList, selectFilterStatus } from '../../slices/todoSlice'
+import TodoItem from '../TodoItem/TodoItem';
+import SettingsContainer from '../SettingsContainer/SettingsContainer';
 
 function AppContent() {
   const todoList = useSelector(selectTodoList)
@@ -21,14 +21,7 @@ function AppContent() {
 
   return (
     <>
-      <div className={styles.counterAll}>
-        <div>
-          Number of tasks:
-          <span className={styles.counterText}>
-            {filteredTodoList.length}
-          </span>
-        </div>
-      </div>
+      <SettingsContainer counter={filteredTodoList.length} />
       <div className={styles.content__wrapper}>
         {filteredTodoList && filteredTodoList.length > 0 ? (
           filteredTodoList.map((todo) => (

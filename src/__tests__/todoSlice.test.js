@@ -7,6 +7,7 @@ describe("tests for todoSlice", () => {
   test("initialize slice with initialValue", () => {
     const listSliceInit = todoSlice(initialState, { type: "unknown" });
     expect(listSliceInit).toBe(initialState);
+    expect(listSliceInit).toStrictEqual({ 'filterStatus': 'all', 'todoList': [] });
   });
 
   test("test addTodo reducer", () => {
