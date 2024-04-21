@@ -52,7 +52,6 @@
 }
 
 .formTitle {
-	// color: var(--black-1);
 	font-size: 2rem;
 	font-weight: 600;
 	margin-bottom: 2rem;
@@ -81,7 +80,6 @@
 	label,
 	span {
 		font-size: 1.6rem;
-		// color: var(--black-1);
 
 		input {
 			color: var(--black-1);
@@ -101,14 +99,6 @@
 		}
 	}
 }
-
-// .buttonContainer {
-// 	display: flex;
-// 	justify-content: flex-start;
-// 	align-items: center;
-// 	margin-top: 2rem;
-// 	gap: 1rem;
-// }
 
 .Button {
 	display: inline-flex;
